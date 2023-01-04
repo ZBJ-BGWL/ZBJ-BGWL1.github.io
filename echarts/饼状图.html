@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <!-- 引入刚刚下载的 ECharts 文件 -->
+  <script src="echarts.min.js"></script>
+</head>
+
+<body>
+  <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+  <div id="main" style="width: 600px;height:400px;position: absolute;border: 2px solid;"></div>
+  <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+      title: {
+        text: '二十大党员代表占比分布',
+        subtext: 'Number of Party members',
+        left: 'center'
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        orient: 'vertical',
+        left: 'left'
+      },
+      series: [
+        {
+          name: 'Access From',
+          type: 'pie',
+          legendHoverLink: true,
+          selectedMode: 'single',
+          selectedoffset: 20,
+          clockwise: true,
+          starAngle: 70,
+          radius: ['25%', '70%'],
+          cursor: 'move',
+          data: [
+            { value: 192, name: '工人党员' },
+            { value: 85, name: '农民党员' },
+            { value: 266, name: '专业技术党员' },
+            { value: 619, name: '女党员' },
+            { value: 264, name: '少数民族党员' }
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.8)'
+            }
+          }
+        }
+      ]
+    };
+    myChart.setOption(option);
+  </script>
+</body>
+</html>
